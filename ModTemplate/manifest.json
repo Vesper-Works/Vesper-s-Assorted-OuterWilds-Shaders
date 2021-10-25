@@ -1,8 +1,8 @@
 {
-  "filename": "ModTemplate.dll",
-  "author": "Raicuparta",
-  "name": "Mod Template",
-  "uniqueName": "Raicuparta.ModTemplate",
+  "filename": "Vesper's Assorted OuterWilds Shaders.dll",
+  "author": "Vesper",
+  "name": "Vesper's Assorted OuterWilds Shaders",
+  "uniqueName": "Vesper.VespersAssortedOuterWildsShaders",
   "version": "0.1.0",
-  "owmlVersion": "2.0.0"
+  "owmlVersion": "2.1.0"
 }

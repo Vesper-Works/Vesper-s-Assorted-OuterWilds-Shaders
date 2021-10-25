@@ -1,0 +1,18 @@
+ManifestFileVersion: 0
+CRC: 2244998665
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 32dc5a40116c004ce866c89059e67ef9
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1fe7f94906f226b673154de66f8357c9
+HashAppended: 0
+ClassTypes:
+- Class: 72
+  Script: {instanceID: 0}
+Assets:
+- Assets/OilShader.compute
+- Assets/PixelShader.compute
+- Assets/ASCIIShader.compute
+Dependencies: []

@@ -1,3 +1,56 @@
 {
-	"enabled": true
+	"enabled": true,
+	"settings": {
+		"Pixel shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "Pixel shader"
+		},
+		"Pixel scale": {
+			"type": "slider",
+			"value": 2,
+			"min": 2,
+			"max": 12
+		},
+		"Pixel blend": {
+			"type": "toggle",
+			"value": false,
+			"title": "Pixel Blend"
+		},
+		"ASCII shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "ASCII shader"
+		},
+		"ASCII scale": {
+			"type": "slider",
+			"value": 1,
+			"min": 1,
+			"max": 11
+		},		
+		"ASCII back brightness": {
+			"type": "slider",
+			"value": 0.1,
+			"min": 0,
+			"max": 10
+		},
+		"Oil shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "Oil shader"
+		},
+		"Oil intensity": {
+			"type": "slider",
+			"value": 10,
+			"min": 0,
+			"max": 10
+		},
+		"Oil radius": {
+			"type": "slider",
+			"value": 5,
+			"min": 1,
+			"max": 11
+		}
+	}
+	
 }
