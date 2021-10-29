@@ -19,16 +19,24 @@ namespace VespersAssortedOuterWildsShaders
 
         public int OilIntensity;
         public int OilRadius;
+     
+        public int EdgeDetectionRadius;
 
         public bool PixelShaderOn;
         public bool ASCIIShaderOn;
         public bool OilShaderOn;
+        public bool EdgeDetectionShaderOn;
+        public bool InvertShaderOn;
+        public bool SynthWaveShaderOn;
 
         public ComputeShader ASCIIShader;
         public ComputeShader PixelShader;
         public ComputeShader OilShader;
+        public ComputeShader EdgeDetectionShader;
+        public ComputeShader InvertShader;
+        public ComputeShader SynthWaveShader;
 
-        public bool AllShadersOff { get => !ASCIIShaderOn && !PixelShaderOn && !OilShaderOn; }
+        public bool AllShadersOff { get => !ASCIIShaderOn && !PixelShaderOn && !OilShaderOn && !EdgeDetectionShaderOn && !InvertShaderOn && !SynthWaveShaderOn; }
         Camera NormalCamera { get => Camera.main; }
         public static MainBehaviour Instance { get; set; }
         private void Start()
@@ -60,13 +68,17 @@ namespace VespersAssortedOuterWildsShaders
             PixelShaderOn = config.GetSettingsValue<bool>("Pixel shader");
             ASCIIShaderOn = config.GetSettingsValue<bool>("ASCII shader");
             OilShaderOn = config.GetSettingsValue<bool>("Oil shader");
+            EdgeDetectionShaderOn = config.GetSettingsValue<bool>("Edge detection shader");
+            InvertShaderOn = config.GetSettingsValue<bool>("Invert shader");
+            SynthWaveShaderOn = config.GetSettingsValue<bool>("Synthwave shader");
 
-            PixelNoBlend = !config.GetSettingsValue<bool>("Pixel blend");
+            //PixelNoBlend = !config.GetSettingsValue<bool>("Pixel blend");
             PixelScaleFactor = config.GetSettingsValue<float>("Pixel scale");
             ASCIIScaleFactor = config.GetSettingsValue<float>("ASCII scale");
-            ASCIIBackBrightness = config.GetSettingsValue<float>("ASCII back brightness");
+            //ASCIIBackBrightness = config.GetSettingsValue<float>("ASCII back brightness");
             OilIntensity = config.GetSettingsValue<int>("Oil intensity");
             OilRadius = config.GetSettingsValue<int>("Oil radius");
+            EdgeDetectionRadius = config.GetSettingsValue<int>("Edge detection radius");
         }
 
         private void Textures()
@@ -84,6 +96,28 @@ namespace VespersAssortedOuterWildsShaders
             ModHelper.Console.WriteLine("Done!");
         }
 
+        //public bool AnyOtherShaderOn(string shaderOn)
+        //{
+        //    bool otherShaderIsOn = false;
+        //    if(nameof(ASCIIShader) != shaderOn)
+        //    {
+        //        otherShaderIsOn = ASCIIShaderOn || otherShaderIsOn;
+        //    }
+        //    if(nameof(PixelShader) != shaderOn)
+        //    {
+        //        otherShaderIsOn = PixelShaderOn || otherShaderIsOn;
+        //    }
+        //    if(nameof(OilShader) != shaderOn)
+        //    {
+        //        otherShaderIsOn = OilShaderOn || otherShaderIsOn;
+        //    }
+        //    if(nameof(EdgeDetectionShader) != shaderOn)
+        //    {
+        //        otherShaderIsOn = EdgeDetectionShaderOn || otherShaderIsOn;
+        //    }
+        //    return otherShaderIsOn;
+        //}
+
         private void ComputeShaders()
         {
             ModHelper.Console.WriteLine("Loading compute shaders...");
@@ -93,6 +127,9 @@ namespace VespersAssortedOuterWildsShaders
             ASCIIShader = shaderbundle.LoadAsset<ComputeShader>("ASCIIShader");
             PixelShader = shaderbundle.LoadAsset<ComputeShader>("PixelShader");
             OilShader = shaderbundle.LoadAsset<ComputeShader>("OilShader");
+            EdgeDetectionShader = shaderbundle.LoadAsset<ComputeShader>("EdgeDetectionShader");
+            InvertShader = shaderbundle.LoadAsset<ComputeShader>("InvertShader");
+            SynthWaveShader = shaderbundle.LoadAsset<ComputeShader>("SynthWaveShader");
             ModHelper.Console.WriteLine("Done!");
         }
 

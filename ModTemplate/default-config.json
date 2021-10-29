@@ -1,21 +1,10 @@
 {
 	"enabled": true,
 	"settings": {
-		"Pixel shader": {
+		"Invert shader": {
 			"type": "toggle",
 			"value": false,
-			"title": "Pixel shader"
-		},
-		"Pixel scale": {
-			"type": "slider",
-			"value": 2,
-			"min": 2,
-			"max": 12
-		},
-		"Pixel blend": {
-			"type": "toggle",
-			"value": false,
-			"title": "Pixel Blend"
+			"title": "Invert shader"
 		},
 		"ASCII shader": {
 			"type": "toggle",
@@ -27,12 +16,17 @@
 			"value": 1,
 			"min": 1,
 			"max": 11
-		},		
-		"ASCII back brightness": {
+		},
+		"Pixel shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "Pixel shader"
+		},
+		"Pixel scale": {
 			"type": "slider",
-			"value": 0.1,
-			"min": 0,
-			"max": 10
+			"value": 8,
+			"min": 2,
+			"max": 12
 		},
 		"Oil shader": {
 			"type": "toggle",
@@ -50,6 +44,22 @@
 			"value": 5,
 			"min": 1,
 			"max": 11
+		},
+		"Edge detection shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "Edge detection shader"
+		},
+		"Edge detection radius": {
+			"type": "slider",
+			"value": 2,
+			"min": 1,
+			"max": 11
+		},
+		"Synthwave shader": {
+			"type": "toggle",
+			"value": false,
+			"title": "Synthwave shader"
 		}
 	}
 	
