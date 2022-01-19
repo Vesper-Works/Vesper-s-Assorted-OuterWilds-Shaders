@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1032294962
+CRC: 1041536569
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: shaders
+      Dependencies: {}
+    Info_1:
+      Name: chatui
       Dependencies: {}

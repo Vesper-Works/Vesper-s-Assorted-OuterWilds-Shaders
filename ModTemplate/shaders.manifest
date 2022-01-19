@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 3739790263
+CRC: 1407423652
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 92e706e2cbf1d7addd5cedf760bc2b91
+    Hash: 6f36d4ed2992a6bc02a34fb579875e1c
   TypeTreeHash:
     serializedVersion: 2
     Hash: 1fe7f94906f226b673154de66f8357c9
@@ -12,10 +12,5 @@ ClassTypes:
 - Class: 72
   Script: {instanceID: 0}
 Assets:
-- Assets/OilShader.compute
-- Assets/InvertShader.compute
-- Assets/PixelShader.compute
-- Assets/EdgeDetectionShader.compute
-- Assets/SynthWaveShader.compute
 - Assets/ASCIIShader.compute
 Dependencies: []

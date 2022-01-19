@@ -43,26 +43,17 @@ namespace VespersAssortedOuterWildsShaders
         {
             Instance = this;
 
-            //ModHelper.Console.WriteLine("Skipping splash screen...");
-            //var titleScreenAnimation = FindObjectOfType<TitleScreenAnimation>();
-            //titleScreenAnimation.SetValue("_fadeDuration", 0);
-            //titleScreenAnimation.SetValue("_gamepadSplash", false);
-            //titleScreenAnimation.SetValue("_introPan", false);
-            //titleScreenAnimation.Invoke("FadeInTitleLogo");
-            //ModHelper.Console.WriteLine("Done!");
-
+          
             ModHelper.Events.Scenes.OnCompleteSceneChange += OnCompleteSceneChange;
 
             Textures();
             ComputeShaders();
             CameraWork();
         }
-
         private void OnCompleteSceneChange(OWScene oldScene, OWScene newScene)
         {
             CameraWork();
         }
-
         public override void Configure(IModConfig config)
         {
             PixelShaderOn = config.GetSettingsValue<bool>("Pixel shader");
@@ -72,18 +63,16 @@ namespace VespersAssortedOuterWildsShaders
             InvertShaderOn = config.GetSettingsValue<bool>("Invert shader");
             SynthWaveShaderOn = config.GetSettingsValue<bool>("Synthwave shader");
 
-            //PixelNoBlend = !config.GetSettingsValue<bool>("Pixel blend");
             PixelScaleFactor = config.GetSettingsValue<float>("Pixel scale");
             ASCIIScaleFactor = config.GetSettingsValue<float>("ASCII scale");
-            //ASCIIBackBrightness = config.GetSettingsValue<float>("ASCII back brightness");
+            ASCIIBackBrightness = config.GetSettingsValue<float>("ASCII back brightness");
             OilIntensity = config.GetSettingsValue<int>("Oil intensity");
             OilRadius = config.GetSettingsValue<int>("Oil radius");
             EdgeDetectionRadius = config.GetSettingsValue<int>("Edge detection radius");
         }
-
         private void Textures()
         {
-            ModHelper.Console.WriteLine("Creating textures...");
+            ModHelper.Console.WriteLine("Creating textures...", MessageType.Info);
             customTexture = new RenderTexture(1920, 1080, 0);
             customTexture.enableRandomWrite = true;
             customTexture.filterMode = FilterMode.Point;
@@ -93,34 +82,11 @@ namespace VespersAssortedOuterWildsShaders
             cameraTexture.enableRandomWrite = true;
             cameraTexture.filterMode = FilterMode.Point;
             cameraTexture.Create();
-            ModHelper.Console.WriteLine("Done!");
+            ModHelper.Console.WriteLine("Done!", MessageType.Success);
         }
-
-        //public bool AnyOtherShaderOn(string shaderOn)
-        //{
-        //    bool otherShaderIsOn = false;
-        //    if(nameof(ASCIIShader) != shaderOn)
-        //    {
-        //        otherShaderIsOn = ASCIIShaderOn || otherShaderIsOn;
-        //    }
-        //    if(nameof(PixelShader) != shaderOn)
-        //    {
-        //        otherShaderIsOn = PixelShaderOn || otherShaderIsOn;
-        //    }
-        //    if(nameof(OilShader) != shaderOn)
-        //    {
-        //        otherShaderIsOn = OilShaderOn || otherShaderIsOn;
-        //    }
-        //    if(nameof(EdgeDetectionShader) != shaderOn)
-        //    {
-        //        otherShaderIsOn = EdgeDetectionShaderOn || otherShaderIsOn;
-        //    }
-        //    return otherShaderIsOn;
-        //}
-
         private void ComputeShaders()
         {
-            ModHelper.Console.WriteLine("Loading compute shaders...");
+            ModHelper.Console.WriteLine("Loading compute shaders...", MessageType.Info);
 
             var shaderbundle = ModHelper.Assets.LoadBundle("shaders");
 
@@ -130,12 +96,11 @@ namespace VespersAssortedOuterWildsShaders
             EdgeDetectionShader = shaderbundle.LoadAsset<ComputeShader>("EdgeDetectionShader");
             InvertShader = shaderbundle.LoadAsset<ComputeShader>("InvertShader");
             SynthWaveShader = shaderbundle.LoadAsset<ComputeShader>("SynthWaveShader");
-            ModHelper.Console.WriteLine("Done!");
+            ModHelper.Console.WriteLine("Done!", MessageType.Success);
         }
-
-        private void CameraWork()
+        private void CameraWork() //My shaders use one camera to render the scene to a texture, and another to display the modified texture to the screen
         {
-            if (NormalCamera == null) { return; }
+            if (NormalCamera == null) { return; } 
 
             GameObject textureCameraGO = new GameObject();
             customCamera = textureCameraGO.AddComponent<Camera>();

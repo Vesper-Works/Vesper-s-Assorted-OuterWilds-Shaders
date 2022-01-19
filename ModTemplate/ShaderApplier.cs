@@ -24,12 +24,14 @@ namespace VespersAssortedOuterWildsShaders
         {
             if (!running || Keyboard.current["h"].IsPressed()) { return; }
 
+            //I use this IF method in order to allow for combining shaders for fun effects, each shader on applies to the same texture, stacking the effect
+
             if (MainBehaviour.Instance.ASCIIShaderOn)
             {
                 MainBehaviour.Instance.ASCIIShader.SetTexture(0, "cameraTexture", cameraTexture);
                 MainBehaviour.Instance.ASCIIShader.SetTexture(0, "asciiTexture", customTexture);
                 MainBehaviour.Instance.ASCIIShader.SetFloat("scaleFactor", MainBehaviour.Instance.ASCIIScaleFactor);
-                MainBehaviour.Instance.ASCIIShader.SetFloat("backBrightness", 0.1f);
+                MainBehaviour.Instance.ASCIIShader.SetFloat("backBrightness", MainBehaviour.Instance.ASCIIBackBrightness);
                 MainBehaviour.Instance.ASCIIShader.Dispatch(0, 1920 / (8 * 8), 1100 / (8 * 8), 1);
                 Graphics.CopyTexture(customTexture, cameraTexture);
             }
